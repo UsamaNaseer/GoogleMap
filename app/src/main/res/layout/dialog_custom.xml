@@ -12,16 +12,17 @@
         android:background="#FFFFFF"
         android:textStyle="bold"
         android:text="Enter Points For Shortest Path"/>
+
     <EditText
         android:id="@+id/et_Startingpoint"
-        android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:hint="@string/dialog_startingpoint" />
+        android:hint="@string/dialog_startingpoint"
+        />
     <EditText
         android:id="@+id/et_destinationpoint"
         android:layout_width="match_parent"

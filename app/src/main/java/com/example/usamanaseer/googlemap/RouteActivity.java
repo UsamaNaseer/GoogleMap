@@ -189,11 +189,11 @@ public class RouteActivity extends FragmentActivity implements OnMapReadyCallbac
                         @Override
                         public void onDirectionSuccess(Direction direction, String rawBody) {
                             if (direction.isOK()) {
-                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(l1, 17.0f));
+                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(l1, 15.0f));
                                 mMap.addMarker(new MarkerOptions().position(l1).title("Origin").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
                                 mMap.addMarker(new MarkerOptions().position(l2).title("Destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
                                 List<LatLng> ll2 = PolyUtil.decode(direction.getRouteList().get(0).getOverviewPolyline().getRawPointList());
-                                mMap.addPolyline(new PolylineOptions().addAll(ll2).color(Color.RED).width(12));
+                                mMap.addPolyline(new PolylineOptions().addAll(ll2).color(Color.BLACK).width(12));
                             } else {
                                 Toast.makeText(getApplicationContext(),"No Direction Found",Toast.LENGTH_SHORT).show();
                                 // Do something
