@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GoogleMap</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="dialog_startingpoint">Enter Starting Point</string>
+    <string name="dialog_destinationpoint">Enter Destination Point</string>
+    <string name="title_activity_route">Map</string>
+</resources>
