@@ -46,7 +46,10 @@
         <activity
             android:name=".RouteActivity"
             android:label="@string/title_activity_route" />
-        <activity android:name=".NearestPlacesActivity"></activity>
+        <activity android:name=".NearestPlacesActivity" />
+        <activity
+            android:name=".NearestPlacesMapActivity"
+            android:label="@string/title_activity_nearest_places_map"></activity>
     </application>
 
 </manifest>

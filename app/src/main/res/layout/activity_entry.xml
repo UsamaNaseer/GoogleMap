@@ -14,15 +14,15 @@
     />
     <Button
         android:layout_marginTop="20dp"
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_below="@id/t_choose"
         android:layout_height="wrap_content"
         android:id="@+id/b_currentlocation"
-        android:text="Destination"
+        android:text="Current LOCATION"
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:id="@+id/b_route"
         android:text="Route"
@@ -30,11 +30,19 @@
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:id="@+id/btn_nearestplaces"
         android:text="Nearest Places"
         android:layout_below="@id/b_route"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_destination"
+        android:text="DESTINATION"
+        android:layout_below="@id/btn_nearestplaces"
         android:layout_centerHorizontal="true"/>
 
 

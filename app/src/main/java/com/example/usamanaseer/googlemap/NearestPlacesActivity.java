@@ -1,5 +1,6 @@
 package com.example.usamanaseer.googlemap;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.*;
 import android.location.Location;
@@ -62,14 +63,11 @@ public class NearestPlacesActivity extends AppCompatActivity {
         mbank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
+                Intent i = new Intent(NearestPlacesActivity.this,NearestPlacesMapActivity.class);
+                startActivity(i);
+                i.putExtra("type",1);
+
+        /*        if (ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }
 
@@ -80,7 +78,7 @@ public class NearestPlacesActivity extends AppCompatActivity {
                                 // Got last known location. In some rare situations this can be null.
                                 if (location != null) {
                                     // Logic to handle location object
-                                     loc = new LatLng(location.getLatitude(), location.getLongitude());
+                                    loc = new LatLng(location.getLatitude(), location.getLongitude());
                                     RetrofitInterface retrofit11 = RetrofitBuilder.retrofit.create(RetrofitInterface.class);
                                     Map<String,String> options = new HashMap<String, String>();
                                     options.put("location",loc.latitude +"," + loc.longitude);
@@ -110,13 +108,307 @@ public class NearestPlacesActivity extends AppCompatActivity {
                                         public void onFailure(Call<PlacesModel> call, Throwable t) {
                                         }
                                     });
-                                     }
+                                }
+                            }
+                        });*/
+
+
+            }
+        });
+
+        mhospital = (ImageButton) findViewById(R.id.img_hospital);
+        mhospital.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+
+                mFusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(NearestPlacesActivity.this, new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                // Got last known location. In some rare situations this can be null.
+                                if (location != null) {
+                                    // Logic to handle location object
+                                    Intent i = new Intent(NearestPlacesActivity.this,NearestPlacesMapActivity.class);
+                                    startActivity(i);
+                                    i.putExtra("type",0);
+
+                                /*    loc = new LatLng(location.getLatitude(), location.getLongitude());
+                                    RetrofitInterface retrofit11 = RetrofitBuilder.retrofit.create(RetrofitInterface.class);
+                                    Map<String,String> options = new HashMap<String, String>();
+                                    options.put("location",loc.latitude +"," + loc.longitude);
+                                    options.put("radius","1000");
+                                    options.put("type","hospital");
+                                    options.put("key","AIzaSyDSzhyMIiCSOABINtycTXG5eUzgotInDeo");
+
+                                    Call<PlacesModel> call = retrofit11.placeslist(options);
+
+                                    call.enqueue(new Callback<PlacesModel>() {
+                                        @Override
+                                        public void onResponse(Call<PlacesModel> call, Response<PlacesModel> response) {
+                                            PlacesModel mPlaces = response.body();
+                                            List<Result> mRes = mPlaces.getResults();
+
+                                            LinearLayout lL1 = (LinearLayout) findViewById(R.id.ll_forPlaces);
+                                            lL1.setVisibility(View.VISIBLE);
+                                            LinearLayout lL2 = (LinearLayout) findViewById(R.id.ll_withoutPlaces);
+                                            lL2.setVisibility(View.GONE);
+                                            ListView l1 = (ListView)findViewById(R.id.lv_forPlaces);
+                                            PlacesAdapter placesAdapter = new PlacesAdapter(getApplicationContext(),R.layout.item_places,mRes);
+                                            l1.setAdapter(placesAdapter);
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<PlacesModel> call, Throwable t) {
+                                        }
+                                    });*/
+                                }
                             }
                         });
 
 
             }
         });
+
+        mresturant = (ImageButton) findViewById(R.id.img_restaurant);
+        mresturant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+
+                mFusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(NearestPlacesActivity.this, new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                // Got last known location. In some rare situations this can be null.
+                                if (location != null) {
+                                    // Logic to handle location object
+                                    Intent i = new Intent(NearestPlacesActivity.this,NearestPlacesMapActivity.class);
+                                    startActivity(i);
+                                    i.putExtra("type",4);
+
+                                    /*loc = new LatLng(location.getLatitude(), location.getLongitude());
+                                    RetrofitInterface retrofit11 = RetrofitBuilder.retrofit.create(RetrofitInterface.class);
+                                    Map<String,String> options = new HashMap<String, String>();
+                                    options.put("location",loc.latitude +"," + loc.longitude);
+                                    options.put("radius","1000");
+                                    options.put("type","restaurant");
+                                    options.put("key","AIzaSyDSzhyMIiCSOABINtycTXG5eUzgotInDeo");
+
+                                    Call<PlacesModel> call = retrofit11.placeslist(options);
+
+                                    call.enqueue(new Callback<PlacesModel>() {
+                                        @Override
+                                        public void onResponse(Call<PlacesModel> call, Response<PlacesModel> response) {
+                                            PlacesModel mPlaces = response.body();
+                                            List<Result> mRes = mPlaces.getResults();
+
+                                            LinearLayout lL1 = (LinearLayout) findViewById(R.id.ll_forPlaces);
+                                            lL1.setVisibility(View.VISIBLE);
+                                            LinearLayout lL2 = (LinearLayout) findViewById(R.id.ll_withoutPlaces);
+                                            lL2.setVisibility(View.GONE);
+                                            ListView l1 = (ListView)findViewById(R.id.lv_forPlaces);
+                                            PlacesAdapter placesAdapter = new PlacesAdapter(getApplicationContext(),R.layout.item_places,mRes);
+                                            l1.setAdapter(placesAdapter);
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<PlacesModel> call, Throwable t) {
+                                        }
+                                    });*/
+                                }
+                            }
+                        });
+
+
+            }
+        });
+
+
+        mschool = (ImageButton) findViewById(R.id.img_school);
+        mschool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+
+                mFusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(NearestPlacesActivity.this, new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                // Got last known location. In some rare situations this can be null.
+                                if (location != null) {
+                                    // Logic to handle location object
+
+                                    Intent i = new Intent(NearestPlacesActivity.this,NearestPlacesMapActivity.class);
+                                    startActivity(i);
+                                    i.putExtra("type",5);
+
+
+                                  /*  loc = new LatLng(location.getLatitude(), location.getLongitude());
+                                    RetrofitInterface retrofit11 = RetrofitBuilder.retrofit.create(RetrofitInterface.class);
+                                    Map<String,String> options = new HashMap<String, String>();
+                                    options.put("location",loc.latitude +"," + loc.longitude);
+                                    options.put("radius","1000");
+                                    options.put("type","school");
+                                    options.put("key","AIzaSyDSzhyMIiCSOABINtycTXG5eUzgotInDeo");
+
+                                    Call<PlacesModel> call = retrofit11.placeslist(options);
+
+                                    call.enqueue(new Callback<PlacesModel>() {
+                                        @Override
+                                        public void onResponse(Call<PlacesModel> call, Response<PlacesModel> response) {
+                                            PlacesModel mPlaces = response.body();
+                                            List<Result> mRes = mPlaces.getResults();
+
+                                            LinearLayout lL1 = (LinearLayout) findViewById(R.id.ll_forPlaces);
+                                            lL1.setVisibility(View.VISIBLE);
+                                            LinearLayout lL2 = (LinearLayout) findViewById(R.id.ll_withoutPlaces);
+                                            lL2.setVisibility(View.GONE);
+                                            ListView l1 = (ListView)findViewById(R.id.lv_forPlaces);
+                                            PlacesAdapter placesAdapter = new PlacesAdapter(getApplicationContext(),R.layout.item_places,mRes);
+                                            l1.setAdapter(placesAdapter);
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<PlacesModel> call, Throwable t) {
+                                        }
+                                    });*/
+                                }
+                            }
+                        });
+
+
+            }
+        });
+
+
+        mmall = (ImageButton) findViewById(R.id.img_mall);
+        mmall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+
+                mFusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(NearestPlacesActivity.this, new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                // Got last known location. In some rare situations this can be null.
+                                if (location != null) {
+                                    // Logic to handle location object
+                                    Intent i = new Intent(NearestPlacesActivity.this,NearestPlacesMapActivity.class);
+                                    startActivity(i);
+                                    i.putExtra("type",2);
+
+
+                                  /*  loc = new LatLng(location.getLatitude(), location.getLongitude());
+                                    RetrofitInterface retrofit11 = RetrofitBuilder.retrofit.create(RetrofitInterface.class);
+                                    Map<String,String> options = new HashMap<String, String>();
+                                    options.put("location",loc.latitude +"," + loc.longitude);
+                                    options.put("radius","1000");
+                                    options.put("type","shopping_mall");
+                                    options.put("key","AIzaSyDSzhyMIiCSOABINtycTXG5eUzgotInDeo");
+
+                                    Call<PlacesModel> call = retrofit11.placeslist(options);
+
+                                    call.enqueue(new Callback<PlacesModel>() {
+                                        @Override
+                                        public void onResponse(Call<PlacesModel> call, Response<PlacesModel> response) {
+                                            PlacesModel mPlaces = response.body();
+                                            List<Result> mRes = mPlaces.getResults();
+
+                                            LinearLayout lL1 = (LinearLayout) findViewById(R.id.ll_forPlaces);
+                                            lL1.setVisibility(View.VISIBLE);
+                                            LinearLayout lL2 = (LinearLayout) findViewById(R.id.ll_withoutPlaces);
+                                            lL2.setVisibility(View.GONE);
+                                            ListView l1 = (ListView)findViewById(R.id.lv_forPlaces);
+                                            PlacesAdapter placesAdapter = new PlacesAdapter(getApplicationContext(),R.layout.item_places,mRes);
+                                            l1.setAdapter(placesAdapter);
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<PlacesModel> call, Throwable t) {
+                                        }
+                                    });*/
+                                }
+                            }
+                        });
+
+
+            }
+        });
+
+
+        mmosque = (ImageButton) findViewById(R.id.img_mosque);
+        mmosque.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(NearestPlacesActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+
+                mFusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(NearestPlacesActivity.this, new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                // Got last known location. In some rare situations this can be null.
+                                if (location != null) {
+                                    // Logic to handle location object
+                                    Intent i = new Intent(NearestPlacesActivity.this,NearestPlacesMapActivity.class);
+                                    startActivity(i);
+                                    i.putExtra("type",3);
+
+
+                                   /* loc = new LatLng(location.getLatitude(), location.getLongitude());
+                                    RetrofitInterface retrofit11 = RetrofitBuilder.retrofit.create(RetrofitInterface.class);
+                                    Map<String,String> options = new HashMap<String, String>();
+                                    options.put("location",loc.latitude +"," + loc.longitude);
+                                    options.put("radius","1000");
+                                    options.put("type","mosque");
+                                    options.put("key","AIzaSyDSzhyMIiCSOABINtycTXG5eUzgotInDeo");
+
+                                    Call<PlacesModel> call = retrofit11.placeslist(options);
+
+                                    call.enqueue(new Callback<PlacesModel>() {
+                                        @Override
+                                        public void onResponse(Call<PlacesModel> call, Response<PlacesModel> response) {
+                                            PlacesModel mPlaces = response.body();
+                                            List<Result> mRes = mPlaces.getResults();
+
+                                            LinearLayout lL1 = (LinearLayout) findViewById(R.id.ll_forPlaces);
+                                            lL1.setVisibility(View.VISIBLE);
+                                            LinearLayout lL2 = (LinearLayout) findViewById(R.id.ll_withoutPlaces);
+                                            lL2.setVisibility(View.GONE);
+                                            ListView l1 = (ListView)findViewById(R.id.lv_forPlaces);
+                                            PlacesAdapter placesAdapter = new PlacesAdapter(getApplicationContext(),R.layout.item_places,mRes);
+                                            l1.setAdapter(placesAdapter);
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<PlacesModel> call, Throwable t) {
+                                        }
+                                    });*/
+                                }
+                            }
+                        });
+
+
+            }
+        });
+
+
 
     }
 
